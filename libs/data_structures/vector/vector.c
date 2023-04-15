@@ -75,6 +75,7 @@ void pushBack(Vector *v, int x) {
     } else if (isFull(v)) {
         reserve(v, v->capacity * 2);
     }
+
     *(v->data + v->size++) = x;
 }
 
@@ -84,5 +85,28 @@ void popBack(Vector *v) {
         fprintf(stderr, "Vector is empty");
         exit(1);
     }
+
     v->size--;
+}
+
+//четвертый коммит
+
+//возвращает указатель на index-ый элемент вектора v.
+int *atVector(Vector *v, size_t index) {
+    if (index > v->size) {
+        fprintf(stderr, "IndexError: a[%llu] is not exists", index);
+        exit(1);
+    }
+
+    return v->data + index;
+}
+
+//возвращает указатель на последний элемент вектора v
+int *back(Vector *v) {
+    return v->data + v->size - 1;
+}
+
+//возвращает указатель на нулевой элемент вектора v
+int *front(Vector *v) {
+    return v->data;
 }
